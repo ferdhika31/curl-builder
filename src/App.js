@@ -14,6 +14,7 @@ import Button from '@material-ui/core/Button';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Alert from '@material-ui/lab/Alert';
 import DeleteIcon from '@material-ui/icons/Delete';
+import copy from "copy-to-clipboard";  
 
 const useStyles = makeStyles((theme) => ({
 	formControl: {
@@ -412,7 +413,21 @@ export default function App() {
 							<FormControl fullWidth variant="outlined" className={classes.formControl}>
 								Result :
 								<TextareaAutosize readonly className="form-control" aria-label="json" rowsMin={3} placeholder="JSON" value={curlCommandText}/>
+
+								<Button
+									variant="contained"
+									color="primary"
+									className={"mt-2 "+classes.button}
+									onClick={() => {
+										alert("Copied! => "+curlCommandText)
+										copy(curlCommandText)
+									}}
+								>
+									Copy to clipboard
+								</Button>
 							</FormControl>
+
+							
 						</CardContent>
 					</Card>
 				</div>
